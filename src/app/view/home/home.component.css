@@ -1,0 +1,13 @@
+.galery{
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 50rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(15rem,1fr));
+}
+
+
+.contenedor{
+    width: 10%;
+    background-color: rebeccapurple;
+}

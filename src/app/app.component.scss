@@ -67,3 +67,11 @@ mat-divider {
     margin-bottom: 16px;
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+.galery{
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 22rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%,25rem),1fr));
+}
