@@ -2,3 +2,36 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+/*STILO PARA TODAS LAS CABECERA */
+.cabecera{
+
+    padding-right: 48px;
+    height: 40px;
+    margin-top: -24px;
+    /*vertical-align: top;*/
+    text-align: center;
+    margin-left: -24px;
+    margin-right: -24px;
+    background: #367cbd;  
+
+    display: grid;
+    width: 100%;
+    grid-template-columns: 98% 5%;
+    grid-template-rows: 100%;
+    grid-template-areas: "titulo cerrar";
+}
+
+.cabecera .titulo{
+    padding-top: 10px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;    
+}
+.cabecera .botoncerrar{
+
+      color: rgb(255, 255, 255);
+
+}

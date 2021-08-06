@@ -14,6 +14,8 @@ export class ScriptprocedureComponent implements OnInit {
 
   script :string;
 
+  nombreprocedimiento: string;
+
   constructor(
     private dialogo: MatDialogRef<ScriptprocedureComponent>,
     @Inject(MAT_DIALOG_DATA) public data_dialog: Procedure,
@@ -23,6 +25,7 @@ export class ScriptprocedureComponent implements OnInit {
   ngOnInit(): void {
 
     this.cargarscriptprocedure(this.data_dialog);
+    this.nombreprocedimiento =  this.data_dialog.schema+'.'+this.data_dialog.name;
 
   }
 

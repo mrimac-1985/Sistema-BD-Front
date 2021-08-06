@@ -1,3 +1,4 @@
+import { HistoricoComponent } from './../historico/historico.component';
 import { ScriptprocedureComponent } from './scriptprocedure/scriptprocedure.component';
 import { Pageable } from './../../util/pageable';
 import { ProcedureService } from './../../_service/procedure.service';
@@ -123,14 +124,23 @@ export class ProcedureComponent implements OnInit {
 
   descargarhistorial(procedure? : Procedure ){
 
-    let dato : DDLEvents = new DDLEvents();
-
-    dato.objectname='Usp_Conv_Adm_NombreMetodo_XXX'
-
-    this.procedureservice.descargarhistorial(dato).subscribe(respuestabase => {
-
-      this.reporteservicio.descargarArchivo(respuestabase.data[0].reporte, respuestabase.data[0].nombreArchivo,respuestabase.data[0].extension);
+       
+    this.dialog.open(HistoricoComponent, {
+      width: '1300px',
+      data: procedure,
+      disableClose: true 
     });
+
+
+
+    // let dato : DDLEvents = new DDLEvents();
+
+    // dato.objectname='Usp_Conv_Adm_NombreMetodo_XXX'
+
+    // this.procedureservice.descargarhistorial(dato).subscribe(respuestabase => {
+
+    //   this.reporteservicio.descargarArchivo(respuestabase.data[0].reporte, respuestabase.data[0].nombreArchivo,respuestabase.data[0].extension);
+    // });
     
   }
 
