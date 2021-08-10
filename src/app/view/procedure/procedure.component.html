@@ -35,11 +35,11 @@
             </ng-container>
             <ng-container matColumnDef="Fecha_Creacion"  >
                 <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Creacion </mat-header-cell>
-                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.create_date}}</mat-cell>
+                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.create_date | date: 'yyyy-MM-dd hh:mm a'}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="Fecha_Modificacion"  >
                 <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Modificacion </mat-header-cell>
-                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.modify_date}}</mat-cell>
+                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.modify_date | date: 'yyyy-MM-dd hh:mm a'}}</mat-cell>
             </ng-container>
             
     
