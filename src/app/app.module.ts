@@ -21,6 +21,8 @@ import { ViewsComponent } from './view/views/views.component';
 import { ScriptprocedureComponent } from './view/procedure/scriptprocedure/scriptprocedure.component';
 import { ScripttableComponent } from './view/table/scripttable/scripttable.component';
 import { HistoricoComponent } from './view/historico/historico.component';
+import { HistProcedureComponent } from './view/procedure/hist-procedure/hist-procedure.component';
+import { FunctionComponent } from './view/function/function.component';
 
 
 
@@ -35,7 +37,9 @@ import { HistoricoComponent } from './view/historico/historico.component';
     ViewsComponent,
     ScriptprocedureComponent,
     ScripttableComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    HistProcedureComponent,
+    FunctionComponent
   ],
   imports: [
     BrowserModule,

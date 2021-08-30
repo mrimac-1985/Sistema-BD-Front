@@ -1,3 +1,4 @@
+
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,14 +9,14 @@ import { ReporteService } from 'src/app/util/reporte.service';
 import { DDLEvents } from 'src/app/_model/ddlevents';
 import { Procedure } from 'src/app/_model/procedure';
 import { ProcedureService } from 'src/app/_service/procedure.service';
-import { ScriptprocedureComponent } from '../procedure/scriptprocedure/scriptprocedure.component';
+import { ScriptprocedureComponent } from '../scriptprocedure/scriptprocedure.component';
 
 @Component({
-  selector: 'app-historico',
-  templateUrl: './historico.component.html',
-  styleUrls: ['./historico.component.css']
+  selector: 'app-hist-procedure',
+  templateUrl: './hist-procedure.component.html',
+  styleUrls: ['./hist-procedure.component.css']
 })
-export class HistoricoComponent implements OnInit {
+export class HistProcedureComponent implements OnInit {
 
   nombretitulo : string;
 
@@ -27,29 +28,33 @@ export class HistoricoComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
-   // private dialogo: MatDialogRef<HistoricoComponent>,
-    //@Inject(MAT_DIALOG_DATA) public data_dialog: any,
+    private dialogo: MatDialogRef<HistProcedureComponent>,
+    @Inject(MAT_DIALOG_DATA) public data_dialog: any,
     public procedureservice : ProcedureService,
     public reporteservicio : ReporteService,
     private dialog: MatDialog,
   ) { }
+ 
 
   ngOnInit(): void {
 
     this.nombretitulo ="Historico de Objetos";  
-    this.listarhistorial();
+    this.listarhistorial(this.data_dialog);
   }
 
 
 
- 
-  listarhistorial() {
+  cerrarDialogo(){
+    this.dialogo.close();
+  }
+
+  listarhistorial(data_dialog: any) {
 
     let pagina : Pageable = new Pageable();
      
     pagina.pagenumber =0;
     pagina.pagesize =10;
-    pagina.palabraclave= "" ; //data_dialog;
+    pagina.palabraclave= data_dialog;
 
     this.procedureservice.listarhistorial(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            
@@ -69,7 +74,7 @@ export class HistoricoComponent implements OnInit {
      
     pagina.pagenumber =e.pageIndex*e.pageSize;
     pagina.pagesize =e.pageSize;
-    pagina.palabraclave= "";// this.data_dialog;
+    pagina.palabraclave= this.data_dialog;
 
     this.procedureservice.listarhistorial(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            

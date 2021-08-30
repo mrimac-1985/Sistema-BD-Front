@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { HistProcedureComponent } from '../procedure/hist-procedure/hist-procedure.component';
 
 @Component({
   selector: 'app-table',
@@ -18,6 +19,9 @@ import { MatDialog } from '@angular/material/dialog';
 export class TableComponent implements OnInit {
   /*BUSCAR */
   formBuscar: FormGroup;
+
+  palabracompleta : boolean = false;
+  cadenacompleta :string ='';  
 
   public dataSource: MatTableDataSource<Table>;
   public cantidad: number = 0;
@@ -92,11 +96,20 @@ export class TableComponent implements OnInit {
   }
 
   buscar() {
+
+     
+    if(this.palabracompleta){
+      this.cadenacompleta ='@completa@';
+    }else{      
+      this.cadenacompleta ='';            
+    }  
+
+
     let pagina: Pageable = new Pageable();
 
     pagina.pagenumber = 0;
     pagina.pagesize = 10;
-    pagina.palabraclave = '' + this.formBuscar.value['palabraclave'];
+    pagina.palabraclave = ''+this.cadenacompleta + this.formBuscar.value['palabraclave'];
 
     this.tableservice.listartablas(pagina).subscribe((RespuestaBase) => {
       this.cantidad = RespuestaBase.data[0].totalElements;
@@ -104,6 +117,7 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+
   }
 
   verscript(table?: Table) {
@@ -117,7 +131,15 @@ export class TableComponent implements OnInit {
     });
   }
 
-  descargarhistorial(table?: Table) {}
+  descargarhistorial(table: Table) {
+
+    this.dialog.open(HistProcedureComponent, {
+      width: '1400px',
+      data: table.name,
+      disableClose: true 
+    });
+
+  }
 
   descargartabla(table: Table) {
 
@@ -128,5 +150,6 @@ export class TableComponent implements OnInit {
   }
 
 
+ 
 
 }

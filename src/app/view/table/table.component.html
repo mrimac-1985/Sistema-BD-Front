@@ -12,20 +12,27 @@
                 <button id="search-button" type="submit"  ></button>
             </form>                                                                      
         </div>
-    
+    </div>
+
+    <div class="tipocbuscado">
+        <div class="example-full-width" style="margin-top: 10px; margin-left: 30px;">
+            <section class="example-section">
+                <mat-checkbox class="example-margin"  [(ngModel)]="palabracompleta" >Buscar palabra completa</mat-checkbox>            
+            </section>
+        </div>        
     </div>
 
     <div  class="tabla">
         <mat-table [dataSource]="dataSource" matSort >
     
             <ng-container matColumnDef="Id"  >
-                       <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  >Id </mat-header-cell>
-                       <mat-cell  fxFlex="10%"   *matCellDef="let row" > {{row.object_id}}</mat-cell>
+                       <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Id </mat-header-cell>
+                       <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.object_id}}</mat-cell>
             </ng-container>
     
             <ng-container matColumnDef="Esquema"  >
-                <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  >Esquema </mat-header-cell>
-                <mat-cell  fxFlex="10%"   *matCellDef="let row" > {{row.schema}}</mat-cell>
+                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Esquema </mat-header-cell>
+                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.schema}}</mat-cell>
             </ng-container>
     
             <ng-container matColumnDef="Nombre"  >
@@ -43,8 +50,8 @@
             
     
             <ng-container matColumnDef="Accion" >
-                <mat-header-cell fxFlex="15%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Descargar</mat-header-cell>
-                <mat-cell  fxFlex="15%" *matCellDef="let row;"  class="rowStiloAccion" >
+                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Descargar</mat-header-cell>
+                <mat-cell  fxFlex="10%" *matCellDef="let row;"  class="rowStiloAccion" >
                     <button   mat-icon-button color="primary" matTooltip="Descargar"  (click)="descargartabla(row)">
                         <mat-icon>get_app</mat-icon>
                     </button>  
@@ -63,7 +70,7 @@
     
        </mat-table>
     
-       <mat-paginator   [pageSize]="10"   [pageSizeOptions]="[5, 10, 25, 100 ]"  showFirstLastButtons  [length]="cantidad" (page)="mostrarMas($event)" class="headStilo" >
+       <mat-paginator   [pageSize]="10"   [pageSizeOptions]="[5, 10, 25, 50, 100 ]"  showFirstLastButtons  [length]="cantidad" (page)="mostrarMas($event)" class="headStilo" >
     </mat-paginator>
     
     </div>

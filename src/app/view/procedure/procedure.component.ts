@@ -11,6 +11,8 @@ import { ReporteService } from 'src/app/util/reporte.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DDLEvents } from 'src/app/_model/ddlevents';
+import { map, switchMap } from 'rxjs/operators';
+import { HistProcedureComponent } from './hist-procedure/hist-procedure.component';
 
 @Component({
   selector: 'app-procedure',
@@ -21,10 +23,16 @@ export class ProcedureComponent implements OnInit {
 
 
   /*BUSCAR */
-  formBuscar : FormGroup;
+  formBuscar : FormGroup; 
+  tipobusqueda : string  = '@coincidencia@';  
 
+  operacionSeleccionada: string = 'Palabra Coincidencia';
+  tipoOperaciones = [
+    'Palabra Coincidencia',
+    'Solo palabra completa',
+    'Buscar en script'
+  ];
 
-  
 
   public dataSource: MatTableDataSource<Procedure>;
   public cantidad: number  = 0;
@@ -76,12 +84,23 @@ export class ProcedureComponent implements OnInit {
   
 
   mostrarMas(e?: any) {
+ 
+    switch (this.operacionSeleccionada) {
+      case 'Palabra Coincidencia':
+        this.tipobusqueda = "@coincidencia@";
+        break;
+      case 'Solo palabra completa':
+        this.tipobusqueda = "@@@completa@@@";
+        break;
+      case 'Buscar en script':
+        this.tipobusqueda = "@@@@script@@@@";
+        break;
+    }
 
     let pagina : Pageable = new Pageable();
-     
     pagina.pagenumber =e.pageIndex*e.pageSize;
     pagina.pagesize =e.pageSize;
-    pagina.palabraclave= ""+this.formBuscar.value['palabraclave'];
+    pagina.palabraclave= ""+this.tipobusqueda+this.formBuscar.value['palabraclave'];
 
     this.procedureservice.listarprocedimiento(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            
@@ -93,13 +112,24 @@ export class ProcedureComponent implements OnInit {
   }
 
   buscar(){
+  
+    switch (this.operacionSeleccionada) {
+      case 'Palabra Coincidencia':
+        this.tipobusqueda = "@coincidencia@";
+        break;
+      case 'Solo palabra completa':
+        this.tipobusqueda = "@@@completa@@@";
+        break;
+      case 'Buscar en script':
+        this.tipobusqueda = "@@@@script@@@@";
+        break;
+    }
 
     let pagina : Pageable = new Pageable();
-     
     pagina.pagenumber =0;
     pagina.pagesize =10;
-    pagina.palabraclave= ""+this.formBuscar.value['palabraclave'];
-
+    pagina.palabraclave= ""+this.tipobusqueda+this.formBuscar.value['palabraclave'];
+    
     this.procedureservice.listarprocedimiento(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            
       this.dataSource = new MatTableDataSource(RespuestaBase.data[0].content);      
@@ -108,26 +138,33 @@ export class ProcedureComponent implements OnInit {
     });
   }
 
-  verscript(proc?: Procedure) {
+  verscript(pro : Procedure) {
+  
 
-  //let  procedure : Procedure = new Procedure();
-  let procedure = proc != null ? proc : new Procedure();
-       
-  this.dialog.open(ScriptprocedureComponent, {
-    width: '1300px',
-    data: procedure,
-    disableClose: true 
-  });
+    let procedimiento : Procedure = new Procedure();
+    procedimiento = pro
 
+    this.dialog.open(ScriptprocedureComponent, {
+      width: '1300px',
+      data: procedimiento,
+      disableClose: true 
+    });
+ 
+ 
   }
 
+ 
+   
+    
+   
 
-  descargarhistorial(procedure? : Procedure ){
+  descargarhistorial(procedure : Procedure ){
 
+    let nombreobjeto : string = procedure.name;
        
-    this.dialog.open(HistoricoComponent, {
-      width: '1300px',
-      data: procedure,
+    this.dialog.open(HistProcedureComponent, {
+      width: '1400px',
+      data: nombreobjeto,
       disableClose: true 
     });
 

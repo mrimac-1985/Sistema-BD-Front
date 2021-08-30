@@ -73,11 +73,11 @@
 	display: grid;
 	display: grid;
 	grid-gap: 20px;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, auto);
-	grid-template-areas: "titulo"
-						 "buscador"
-						 "tabla";
+	grid-template-areas: "titulo titulo  titulo titulo titulo"
+						 "buscador buscador buscador buscador tipocbuscado"
+						 "tabla tabla tabla tabla tabla";
 }
 
 .contenedor .titulo{
@@ -92,6 +92,15 @@
 	grid-area: tabla;
 }
 
+
+@media screen and (max-width: 1000px){
+	.contenedor {
+		grid-template-areas: "titulo titulo titulo titulo titulo"						 
+						 "buscador buscador buscador buscador buscador"
+						 "tipocbuscado tipocbuscado tipocbuscado tipocbuscado tipocbuscado"
+						 "tabla tabla tabla tabla tabla";
+	}
+}
 
 /*FIN Estilo Grid contenedor*/
 

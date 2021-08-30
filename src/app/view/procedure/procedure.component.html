@@ -5,17 +5,24 @@
     </div>
      
     
-    <div  class="buscador">
-    
-        <div >                    
+    <div  class="buscador">      
             <form id="search-box"  [formGroup]="formBuscar" (ngSubmit)="buscar()" >
                 <input id="search-form" type="text" placeholder="Buscar por Nombre del procedimiento"  formControlName="palabraclave"  >
                 <button id="search-button" type="submit"  ></button>
-            </form>                                                                      
-        </div>
+            </form>   
+    </div>
+
+    <div class="tipobusqueda">
+       
+            <mat-radio-group name="opciones"  [(ngModel)]="operacionSeleccionada">
+                <mat-radio-button *ngFor="let op of tipoOperaciones" name="opciones" [value]="op"  style="margin: 10px;">
+                  {{op}}
+                </mat-radio-button>
+              </mat-radio-group>
     
     </div>
-    
+     
+
     <div  class="tabla">
         <mat-table [dataSource]="dataSource" matSort >
     
@@ -30,8 +37,8 @@
             </ng-container>
     
             <ng-container matColumnDef="Nombre"  >
-                <mat-header-cell  fxFlex="30%"   *matHeaderCellDef mat-sort-header  >Nombre </mat-header-cell>
-                <mat-cell  fxFlex="30%"   *matCellDef="let row" > {{row.name}}</mat-cell>
+                <mat-header-cell  fxFlex="40%"   *matHeaderCellDef mat-sort-header  >Nombre </mat-header-cell>
+                <mat-cell  fxFlex="40%"   *matCellDef="let row" > {{row.name}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="Fecha_Creacion"  >
                 <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Creacion </mat-header-cell>
@@ -44,8 +51,8 @@
             
     
             <ng-container matColumnDef="Accion" >
-                <mat-header-cell fxFlex="15%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Descargar</mat-header-cell>
-                <mat-cell  fxFlex="15%" *matCellDef="let row;"  class="rowStiloAccion" >
+                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Descargar</mat-header-cell>
+                <mat-cell  fxFlex="10%" *matCellDef="let row;"  class="rowStiloAccion" >
                     <button   mat-icon-button color="primary" matTooltip="Descargar"  (click)="descargarprocedure(row)">
                         <mat-icon>get_app</mat-icon>
                     </button>  
@@ -64,7 +71,7 @@
     
        </mat-table>
     
-       <mat-paginator   [pageSize]="10"   [pageSizeOptions]="[5, 10, 25, 100 ]"  showFirstLastButtons  [length]="cantidad" (page)="mostrarMas($event)" class="headStilo" >
+       <mat-paginator   [pageSize]="10"   [pageSizeOptions]="[5, 10, 25, 50, 100 ]"  showFirstLastButtons  [length]="cantidad" (page)="mostrarMas($event)" class="headStilo" >
     </mat-paginator>
     
     </div>

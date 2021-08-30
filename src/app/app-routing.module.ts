@@ -5,12 +5,16 @@ import { ProcedureComponent } from './view/procedure/procedure.component';
 import { TableComponent } from './view/table/table.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HistoricoComponent } from './view/historico/historico.component';
+import { FunctionComponent } from './view/function/function.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'tabla', component: TableComponent },
   { path: 'vista', component: ViewsComponent},
   { path: 'procedimiento', component: ProcedureComponent },
+  { path: 'funcion', component: FunctionComponent },
+  { path: 'historico', component: HistoricoComponent },
   { path: 'login', component: LoginComponent }
 ];
 
