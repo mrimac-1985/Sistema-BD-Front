@@ -64,25 +64,41 @@
 
 
 
+
 /*INICIO Estilo Grid contenedor*/
 
 .contenedor{
 	width: 100%;
 	max-width: auto;
-	margin: 20px auto;
-	display: grid;
+	margin: 15px auto;
 	display: grid;
 	grid-gap: 20px;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, auto);
-	grid-template-areas: "titulo titulo titulo titulo titulo"
+	grid-template-areas: "titulo titulo . . cantidad"
 						 "buscador buscador buscador tipobusqueda tipobusqueda"
 						 "tabla tabla tabla tabla tabla";
 }
 
 .contenedor .titulo{
+ 
+	text-align: left;
+	padding-top: 10px;	
 	grid-area: titulo;
 }
+
+.contenedor .cantidad{
+	border-width: 2px;
+	background-color: #eeecec;
+	border-style: solid;
+	border-color: rgba(48,44,156,0.25);
+	border-radius: 0px 25px 0px 25px;
+	height: 40px;
+	text-align: center;
+	padding-top: 8px;	
+
+	grid-area: cantidad;
+} 
 
 .contenedor .buscador{
 	grid-area: buscador;
@@ -99,7 +115,7 @@
 
 @media screen and (max-width: 1000px){
 	.contenedor {
-		grid-template-areas: "titulo titulo titulo titulo titulo"						 
+		grid-template-areas: "titulo titulo titulo cantidad cantidad"						 
 						 "buscador buscador buscador buscador buscador"
 						 "tipobusqueda tipobusqueda tipobusqueda tipobusqueda tipobusqueda"
 						 "tabla tabla tabla tabla tabla";

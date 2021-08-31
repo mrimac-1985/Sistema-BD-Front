@@ -1,7 +1,10 @@
 <div class="contenedor">
 
-    <div class="titulo">
-        <h2>PROCEDIMIENTOS</h2>
+    <div class="titulo">        
+        <h2 style="margin-left: 40px;">PROCEDIMIENTOS</h2>
+    </div>
+    <div class="cantidad">   
+        <h1>Cantidad: {{cantidadprocedimientos}}  </h1>
     </div>
      
     
@@ -51,16 +54,19 @@
             
     
             <ng-container matColumnDef="Accion" >
-                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Descargar</mat-header-cell>
+                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Accion</mat-header-cell>
                 <mat-cell  fxFlex="10%" *matCellDef="let row;"  class="rowStiloAccion" >
                     <button   mat-icon-button color="primary" matTooltip="Descargar"  (click)="descargarprocedure(row)">
-                        <mat-icon>get_app</mat-icon>
+                        <!-- <mat-icon>get_app</mat-icon> -->
+                        <img  src="assets/iconos/download.png" width="28" height="28"  />
                     </button>  
-                    <button   mat-icon-button color="primary" matTooltip="history"  (click)="descargarhistorial(row)">
-                        <mat-icon>history</mat-icon>
+                    <button   mat-icon-button color="primary" matTooltip="Historial"  (click)="descargarhistorial(row)">
+                        <!-- <mat-icon>history</mat-icon> -->
+                        <img  src="assets/iconos/historial.png" width="28" height="28"  />
                     </button>
                     <button   mat-icon-button color="primary" matTooltip="Script"  (click)="verscript(row)">
-                        <mat-icon>grading</mat-icon>
+                        <!-- <mat-icon>grading</mat-icon> -->
+                        <img  src="assets/iconos/scripsql1.png" width="28" height="28"  />
                     </button> 
                      
                 </mat-cell>

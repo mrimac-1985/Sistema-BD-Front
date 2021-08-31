@@ -35,3 +35,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       color: rgb(255, 255, 255);
 
 }
+
+/*colores de filas en table */
+
+mat-row:nth-child(odd) {
+	background: #eee;
+}
+
+mat-row.mat-row.ng-star-inserted {
+border: 0;
+}

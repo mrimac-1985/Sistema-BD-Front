@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
+<mat-toolbar class="mat-elevation-z8"   *ngIf="loginService.estaLogueado()" >
   <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened">
           menu
@@ -8,10 +8,17 @@
       </mat-icon>
   </button>
   Responsive side navigation
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button   (click)="cerrarSesion()">
+    <mat-icon>power_settings_new</mat-icon>
+    </button>
+
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8"  [opened]="loginService.estaLogueado()" >
 
       <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
 

@@ -1,25 +1,117 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Cinzel', serif;
+   }
+
+   
+.contenedor{
+	width: 100%;
+  height: 100vh;
+	max-width: auto;
+	margin: 15px auto;
+	display: grid;
+	grid-gap: 0px;
+  background: radial-gradient(#653d84, #332042);
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(6, auto);
+	grid-template-areas: 
+            ". . . . ."
+            ". left right right ."
+						 ". left right right ."
+						 ". left right right ."
+             ". left right right ."
+             ". . . . .";
+}
+
+
+
+.contenedor .left{
+	background: linear-gradient(-45deg, #dcd7e0, #fff);
+  border-radius: 25px 0px 0px 25px;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  grid-area: left;
+}
+
+ 
+
+.contenedor  .right {
+	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%),url(https://www.iicybersecurity.com/ethajaph/2020/03/seguridad-de-bases-de-datos.png);
+	color: #fff;
+  border-radius: 0px 25px 25px 0px;
+  grid-area: right;
+}
+
+.login_box {
+  width: 1050px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 4px 22px -8px #0004;
+  display: flex;
+  overflow: hidden;
+}
+
 img{
 	width: 100%;
 }
-.login {
-    height: 1000px;
-    width: 100%;
-    background: radial-gradient(#653d84, #332042);
-    position: relative;
+
+
+
+
+@media screen and (max-width: 1500px){
+	.contenedor {
+		grid-template-areas: 
+    ". . . . ."
+    ". right right right ."
+     ". right right right ."
+     ". left left left ."
+     ". left left left ."
+     ". . . . .";
+	}
+  .contenedor .left{
+    border-radius: 0px 0px 25px 25px;
+  }
+  .contenedor  .right {
+    border-radius: 25px 25px 0px 0px;
+  }
 }
-.login_box {
-    width: 1050px;
-    height: 600px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 1px 4px 22px -8px #0004;
-    display: flex;
-    overflow: hidden;
+
+
+@media screen and (max-width: 1000px){
+	.contenedor {
+		grid-template-areas: 
+    " . . . . ."
+    " right right right right right"
+     "right right right right right"
+     "left left left left left"
+     "left left left left left"
+     ". . . . .";
+	}
+  .contenedor .left{
+    margin-right: 16px;
+    margin-left: 16px;
+    border-radius: 0px 0px 25px 25px;
+  }
+  .contenedor  .right {
+    margin-right: 16px;
+    margin-left: 16px;
+    border-radius: 25px 25px 0px 0px;
+  }
 }
+
+
+
+
+
+
+
 .login_box .left{
   width: 41%;
   height: 100%;
@@ -30,6 +122,7 @@ img{
   width: 59%;
   height: 100%  
 }
+
 .left .top_link a {
     color: #452A5A;
     font-weight: 400;
@@ -62,31 +155,34 @@ img{
     font-weight: 600;
     font-size: 14px;
 }
-.left{
-	background: linear-gradient(-45deg, #dcd7e0, #fff);
-}
-.submit {
-    border: none;
-    padding: 15px 70px;
-    border-radius: 8px;
-    display: block;
-    margin: auto;
-    margin-top: 120px;
-    background: #583672;
-    color: #fff;
-    font-weight: bold;
-    -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
-    -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
-    box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+
+.btningresar {
+  border: none;
+  padding: 15px 70px;
+  border-radius: 8px;
+  display: block;
+  margin: auto;
+  margin-top: 120px;
+  background: #583672;
+  color: #fff;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+  -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+  box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
 }
 
 
 
-.right {
-	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%),url(https://www.iicybersecurity.com/ethajaph/2020/03/seguridad-de-bases-de-datos.png);
-	color: #fff;
-	position: relative;
-}
+
+
+
+
+
+
+
+
+
+
 
 .right .right-text{
   height: 100%;
@@ -122,6 +218,8 @@ img{
     padding-right: 7px;
     margin-top: -3px;
 }
+
+
 
 
 

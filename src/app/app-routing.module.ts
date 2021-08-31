@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'procedimiento', component: ProcedureComponent },
   { path: 'funcion', component: FunctionComponent },
   { path: 'historico', component: HistoricoComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

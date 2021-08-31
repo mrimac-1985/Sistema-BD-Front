@@ -21,6 +21,7 @@ import { HistProcedureComponent } from './hist-procedure/hist-procedure.componen
 })
 export class ProcedureComponent implements OnInit {
 
+  cantidadprocedimientos : number =0 ;
 
   /*BUSCAR */
   formBuscar : FormGroup; 
@@ -65,7 +66,8 @@ export class ProcedureComponent implements OnInit {
     pagina.palabraclave= "";
 
     this.procedureservice.listarprocedimiento(pagina).subscribe(RespuestaBase => {
-      this.cantidad = RespuestaBase.data[0].totalElements;            
+      this.cantidad = RespuestaBase.data[0].totalElements; 
+      this.cantidadprocedimientos =  RespuestaBase.data[0].totalElements;          
       this.dataSource = new MatTableDataSource(RespuestaBase.data[0].content);      
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

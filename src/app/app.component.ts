@@ -2,6 +2,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { ViewChild } from '@angular/core';
 import { Component } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { LoginService } from './_service/login.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,11 @@ export class AppComponent {
   sidenav!: MatSidenav;
  
 
-  constructor(private observer: BreakpointObserver) {
+  constructor(
+    public loginService: LoginService,
+    private observer: BreakpointObserver,
+    private router: Router
+    ) {
     
   }
 
@@ -32,6 +38,12 @@ export class AppComponent {
     });
   }
 
+
+
+  cerrarSesion() {
+
+    this.router.navigate(["login"]);
+  }
 
 
 
