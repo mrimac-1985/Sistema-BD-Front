@@ -4,3 +4,12 @@
     text-align: justify;
 }
 
+
+
+.rojo       {color : rgb(255, 53, 53)}
+.naranja    {color : orange}
+.amarillo   {color : yellow}
+.verde      {color : green}
+.azul       {color : cyan}
+.anil       {color : blue}
+.violeta    {color : violet}    

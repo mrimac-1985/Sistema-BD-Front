@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pageable } from '../util/pageable';
 import { DDLEvents } from '../_model/ddlevents';
 import { Procedure } from '../_model/procedure';
+import { Docsgd } from '../_model/sgddoc';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,15 @@ export class ProcedureService {
     return this.http.post<any>(this.url+'/cargarscriptprocedurehistorico', ddlevento);
   }
 
- 
+  descargardoc(sgd: Docsgd) {
+    return this.http.post<any>('http://localhost:8007/remitos/descargar', sgd);
+  }
+
+
+  descargardoc2():Observable<any> {
+    return this.http.get('/v1/dni?numero=43449994');
+  }
+
+  
 
 }

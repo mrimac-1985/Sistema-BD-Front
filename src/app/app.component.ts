@@ -36,6 +36,7 @@ export class AppComponent {
         this.sidenav.open();
       }
     });
+    
   }
 
 

@@ -124,3 +124,20 @@
 /*FIN Estilo Grid contenedor*/
 
 
+
+.headcenter{ 
+	color: black;
+	background: rgb(224, 224, 224);
+	font-size:13px;  
+	justify-content: center;
+	
+}
+
+
+.headleft{ 
+	color: black;
+	background: rgb(224, 224, 224);
+	font-size:13px;  
+	justify-content: start;
+}
+

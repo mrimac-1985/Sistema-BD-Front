@@ -30,31 +30,31 @@
         <mat-table [dataSource]="dataSource" matSort >
     
             <ng-container matColumnDef="Id"  >
-                       <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  >Id </mat-header-cell>
+                       <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  class="headleft">ID</mat-header-cell>
                        <mat-cell  fxFlex="10%"   *matCellDef="let row" > {{row.object_id}}</mat-cell>
             </ng-container>
     
             <ng-container matColumnDef="Esquema"  >
-                <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  >Esquema </mat-header-cell>
+                <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  class="headleft">ESQUEMA</mat-header-cell>
                 <mat-cell  fxFlex="10%"   *matCellDef="let row" > {{row.schema}}</mat-cell>
             </ng-container>
     
             <ng-container matColumnDef="Nombre"  >
-                <mat-header-cell  fxFlex="40%"   *matHeaderCellDef mat-sort-header  >Nombre </mat-header-cell>
+                <mat-header-cell  fxFlex="40%"   *matHeaderCellDef mat-sort-header   class="headleft">NOMBRE</mat-header-cell>
                 <mat-cell  fxFlex="40%"   *matCellDef="let row" > {{row.name}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="Fecha_Creacion"  >
-                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Creacion </mat-header-cell>
+                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header   class="headleft">FECHA CREACIÓN</mat-header-cell>
                 <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.create_date | date: 'yyyy-MM-dd hh:mm a'}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="Fecha_Modificacion"  >
-                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Modificacion </mat-header-cell>
+                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header   class="headleft">FECHA MODIFICACIÓN </mat-header-cell>
                 <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.modify_date | date: 'yyyy-MM-dd hh:mm a'}}</mat-cell>
             </ng-container>
             
     
             <ng-container matColumnDef="Accion" >
-                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headStiloAccion" >Accion</mat-header-cell>
+                <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header class="headcenter" >ACCIÓN</mat-header-cell>
                 <mat-cell  fxFlex="10%" *matCellDef="let row;"  class="rowStiloAccion" >
                     <button   mat-icon-button color="primary" matTooltip="Descargar"  (click)="descargarprocedure(row)">
                         <!-- <mat-icon>get_app</mat-icon> -->

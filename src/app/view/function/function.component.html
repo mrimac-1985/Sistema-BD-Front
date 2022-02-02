@@ -32,14 +32,20 @@
             </ng-container>
     
             <ng-container matColumnDef="Esquema"  >
-                <mat-header-cell  fxFlex="10%"   *matHeaderCellDef mat-sort-header  >Esquema </mat-header-cell>
-                <mat-cell  fxFlex="10%"   *matCellDef="let row" > {{row.schema}}</mat-cell>
+                <mat-header-cell  fxFlex="5%"   *matHeaderCellDef mat-sort-header  >Esquema </mat-header-cell>
+                <mat-cell  fxFlex="5%"   *matCellDef="let row" > {{row.schema}}</mat-cell>
             </ng-container>
     
             <ng-container matColumnDef="Nombre"  >
                 <mat-header-cell  fxFlex="40%"   *matHeaderCellDef mat-sort-header  >Nombre </mat-header-cell>
                 <mat-cell  fxFlex="40%"   *matCellDef="let row" > {{row.name}}</mat-cell>
             </ng-container>
+
+            <ng-container matColumnDef="type"  >
+                <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Tipo </mat-header-cell>
+                <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.type_desc}}</mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="Fecha_Creacion"  >
                 <mat-header-cell  fxFlex="15%"   *matHeaderCellDef mat-sort-header  >Fecha_Creacion </mat-header-cell>
                 <mat-cell  fxFlex="15%"   *matCellDef="let row" > {{row.create_date | date: 'yyyy-MM-dd hh:mm a'}}</mat-cell>

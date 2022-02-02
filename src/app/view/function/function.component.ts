@@ -6,7 +6,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pageable } from 'src/app/util/pageable';
 import { ReporteService } from 'src/app/util/reporte.service';
+import { Funcion } from 'src/app/_model/funcion';
 import { Procedure } from 'src/app/_model/procedure';
+import { FuncionService } from 'src/app/_service/funcion.service';
 import { ProcedureService } from 'src/app/_service/procedure.service';
 import { HistProcedureComponent } from '../procedure/hist-procedure/hist-procedure.component';
 import { ScriptprocedureComponent } from '../procedure/scriptprocedure/scriptprocedure.component';
@@ -31,9 +33,9 @@ export class FunctionComponent implements OnInit {
   ];
 
 
-  public dataSource: MatTableDataSource<Procedure>;
+  public dataSource: MatTableDataSource<Funcion>;
   public cantidad: number  = 0;
-  displayedColumns: string[] = ['Id', 'Esquema', 'Nombre','Fecha_Creacion','Fecha_Modificacion', 'Accion'];
+  displayedColumns: string[] = ['Id', 'Esquema', 'Nombre','type','Fecha_Creacion','Fecha_Modificacion', 'Accion'];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   
@@ -42,6 +44,7 @@ export class FunctionComponent implements OnInit {
     public procedureservice : ProcedureService,
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
+    private funcionservice : FuncionService
   ) { }
 
   ngOnInit(): void {
@@ -50,10 +53,10 @@ export class FunctionComponent implements OnInit {
       palabraclave:  new FormControl('')  
     });
 
-    this.listarprocedimiento();
+    this.listarfunciones();
   }
 
-  listarprocedimiento(){
+  listarfunciones(){
 
     let pagina : Pageable = new Pageable();
      
@@ -61,7 +64,7 @@ export class FunctionComponent implements OnInit {
     pagina.pagesize =10;
     pagina.palabraclave= "";
 
-    this.procedureservice.listarprocedimiento(pagina).subscribe(RespuestaBase => {
+    this.funcionservice.listarfunciones(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            
       this.dataSource = new MatTableDataSource(RespuestaBase.data[0].content);      
       this.dataSource.paginator = this.paginator;
@@ -99,10 +102,11 @@ export class FunctionComponent implements OnInit {
     pagina.pagesize =e.pageSize;
     pagina.palabraclave= ""+this.tipobusqueda+this.formBuscar.value['palabraclave'];
 
-    this.procedureservice.listarprocedimiento(pagina).subscribe(RespuestaBase => {
+
+    this.funcionservice.listarfunciones(pagina).subscribe(RespuestaBase => {
       this.cantidad = RespuestaBase.data[0].totalElements;            
       this.dataSource = new MatTableDataSource(RespuestaBase.data[0].content);      
-      //this.dataSource.paginator = this.paginator;
+      this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
 

@@ -7,6 +7,7 @@ import { Pageable } from 'src/app/util/pageable';
 import { ReporteService } from 'src/app/util/reporte.service';
 import { DDLEvents } from 'src/app/_model/ddlevents';
 import { Procedure } from 'src/app/_model/procedure';
+import { Docsgd } from 'src/app/_model/sgddoc';
 import { ProcedureService } from 'src/app/_service/procedure.service';
 import { ScriptprocedureComponent } from '../procedure/scriptprocedure/scriptprocedure.component';
 
@@ -104,5 +105,56 @@ export class HistoricoComponent implements OnInit {
 
   }
 
+
+  descargar(){
+
+    let rutaorigen : string ='D:/FUENTES_SIM/INSTALL/documentos4/Funcionarios/';
+    let fechafinconsulta : string ='17/12/2021';
+
+    //let listasgd : Docsgd[];
+
+    var Docsgdlista = [ 
+//  { 'sDni' : '42301207', 'sFechaIni' : '13/05/2016', 'sFechaFin' : fechafinconsulta, 'sRutaDescarga' : rutaorigen + '42301207' } 
+// ,{ 'sDni' : '45917407', 'sFechaIni' : '02/07/2018', 'sFechaFin' : fechafinconsulta, 'sRutaDescarga' : rutaorigen + '45917407' } 
+// ,{ 'sDni' : '44668592', 'sFechaIni' : '19/11/2018', 'sFechaFin' : fechafinconsulta, 'sRutaDescarga' : rutaorigen + '44668592' } 
+ { 'bIncluyeAnexos' : true, 'sCoEmpleado' : '01164',  'sFechaInicio':'01/01/2017', 'sFechaFin':'31/12/2017', 'sRutaDescarga' : 'D:/SGD_DOC/APP/DESCARGAS/JMEREGILDO/REMITOS/2017' }  
+,{ 'bIncluyeAnexos' : true, 'sCoEmpleado' : '01164',  'sFechaInicio':'01/01/2018', 'sFechaFin':'31/12/2018', 'sRutaDescarga' : 'D:/SGD_DOC/APP/DESCARGAS/JMEREGILDO/REMITOS/2018' } 
+,{ 'bIncluyeAnexos' : true, 'sCoEmpleado' : '01164',  'sFechaInicio':'01/01/2019', 'sFechaFin':'31/12/2019', 'sRutaDescarga' : 'D:/SGD_DOC/APP/DESCARGAS/JMEREGILDO/REMITOS/2019' } 
+,{ 'bIncluyeAnexos' : true, 'sCoEmpleado' : '01164',  'sFechaInicio':'01/01/2020', 'sFechaFin':'31/12/2020', 'sRutaDescarga' : 'D:/SGD_DOC/APP/DESCARGAS/JMEREGILDO/REMITOS/2020' } 
+,{ 'bIncluyeAnexos' : true, 'sCoEmpleado' : '01164',  'sFechaInicio':'01/01/2021', 'sFechaFin':'31/12/2021', 'sRutaDescarga' : 'D:/SGD_DOC/APP/DESCARGAS/JMEREGILDO/REMITOS/2021' } 
+
+  ];
+
+    
+  Docsgdlista.forEach(objeto=>{
+    
+    let sgd : Docsgd = new Docsgd( );
+    sgd.bIncluyeAnexos = objeto.bIncluyeAnexos;
+    sgd.sCoEmpleado=objeto.sCoEmpleado;
+    sgd.sFechaInicio= objeto.sFechaInicio;
+    sgd.sFechaFin= objeto.sFechaFin;
+    sgd.sRutaDescarga= objeto.sRutaDescarga;
+
+     this.procedureservice.descargardoc(sgd).subscribe(respuestabase =>{
+       console.log(respuestabase)
+     });
+    
+  });
+
+
+    // let sgd : Docsgd = new Docsgd( );
+    // sgd.sDni = '45601186';
+    // sgd.sFechaIni='23/12/2015';
+    // sgd.sFechaFin= fechafinconsulta;
+    // sgd.sRutaDescarga=  rutaorigen + sgd.sDni;
+    
+    // this.procedureservice.descargardoc(sgd).subscribe(respuestabase =>{
+    //   console.log(respuestabase)
+    // });
+
+
+
+    
+  }
   
 }

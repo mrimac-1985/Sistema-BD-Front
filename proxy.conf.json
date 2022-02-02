@@ -1,0 +1,8 @@
+{
+    "/v1/*":{
+        "target":"https://api.apis.net.pe",
+        "secure":false,
+        "logLevel":"debug",
+        "changeOrigin":true
+    }
+} 

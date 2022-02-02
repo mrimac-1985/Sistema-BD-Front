@@ -1,3 +1,5 @@
+<ng-progress #progressBar  > </ng-progress>
+
 <mat-toolbar class="mat-elevation-z8"   *ngIf="loginService.estaLogueado()" >
   <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened">
@@ -36,7 +38,7 @@
           <span>Login</span>
       </button>
       <button mat-button class="menu-button" routerLink="/historico">
-        <mat-icon>history</mat-icon>
+        <mat-icon>history</mat-icon>    
         <span>Historico</span>
     </button>
       <button mat-button class="menu-button">
@@ -82,7 +84,7 @@
       </div>
 
 
-  </mat-sidenav-content>
+</mat-sidenav-content>
 
 
 
